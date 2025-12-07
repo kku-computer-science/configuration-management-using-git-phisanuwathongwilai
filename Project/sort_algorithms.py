@@ -38,18 +38,29 @@ def quick_sort(data_list):
 # ส่วนที่ 2: ฟังก์ชัน Bubble Sort (ยังขาดอยู่ )
 # ====================================================================
 
-def bubble_sort(data_list):
+def bubble_sort(data_list):  # นายณัฐดนัย ชาวไทย
     """
-    ฟังก์ชันสำหรับเรียงลำดับรายการตัวเลขโดยใช้วิธี Bubble Sort (ต้อง implement)
-    หลักการ: เปรียบเทียบตัวเลขที่อยู่ติดกันแล้วสลับตำแหน่งถ้าตัวหน้ามากกว่าตัวหลัง
-    ต้องวนซ้ำหลายรอบจนกว่าจะไม่มีการสลับเกิดขึ้น
+    ฟังก์ชันสำหรับเรียงลำดับรายการตัวเลขโดยใช้วิธี Bubble Sort
+    หลักการ: เปรียบเทียบค่าที่อยู่ติดกันและสลับตำแหน่งถ้าตัวหน้ามากกว่าตัวหลัง
+    ทำซ้ำหลายรอบจนกว่าจะไม่มีการสลับเกิดขึ้น
     """
-    # ** สมาชิก B ต้องใส่โค้ด Bubble Sort ที่นี่ **
-    # ตัวอย่างการคืนค่าชั่วคราว:
-    # return sorted(data_list) # ไม่ควรใช้จริงในการส่งงาน
-    pass # ควรลบ pass เมื่อใส่โค้ดจริง
+    n = len(data_list)
 
+    # วนซ้ำตามจำนวนรอบ
+    for i in range(n - 1):
+        swapped = False  # ใช้ตรวจว่ามีการสลับหรือไม่ในรอบนี้
 
+        # วนเปรียบเทียบทีละคู่
+        for j in range(n - 1 - i):
+            if data_list[j] > data_list[j + 1]:
+                # สลับตำแหน่ง
+                data_list[j], data_list[j + 1] = data_list[j + 1], data_list[j]
+                swapped = True
+
+        if not swapped:
+            break
+
+    return data_list
 
 # ====================================================================
 # ส่วนที่ 3: ส่วนควบคุมหลักของโปรแกรม 
@@ -83,7 +94,7 @@ def main(): # นายณัฐนันท์ ขำสม
     sorted_result = []
 
     while True:
-        choice_input = input("โปรดเลือก Algorithm (quick sort (q) / bubble sort (q) ): ").lower().strip()
+        choice_input = input("โปรดเลือก Algorithm (quick sort (q) / bubble sort (b) ): ").lower().strip()
 
         data_copy = numbers_to_sort.copy()
 
